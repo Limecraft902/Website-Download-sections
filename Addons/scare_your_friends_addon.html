@@ -1,25 +1,21 @@
-<!-- Download Counter Widget (by MBT) -->
 <div id="download-counter-widget">
   <p>Downloads: <span id="download-count">0</span></p>
   <button data-download-count="true" id="download-button">Download this Add-on</button>
 </div>
 
-<!-- Firebase and jQuery Scripts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdn.firebase.com/v0/firebase.js"></script>
 
-<!-- Download Counter Script -->
 <script type="text/javascript">
-  // Initialize the download counter
+
   $(document).ready(function () {
     var downloadButton = $('#download-button');
     var downloadCount = $('#download-count');
-    var id = "unique-download-id"; // Replace with a unique ID for this widget
+    var id = "unique-download-id";
     var downloadStats = new Firebase("https://downloads-5bbcb-default-rtdb.firebaseio.com/downloads/id/" + id);
     var data = {};
     var isnew = false;
 
-    // Fetch the current download count
     downloadStats.once('value', function (snapshot) {
       data = snapshot.val();
       if (data == null) {
@@ -32,8 +28,7 @@
       }
       downloadCount.text(data.value.toLocaleString());
     });
-
-    // Increment the download count and open the download link in a new window
+    
     downloadButton.click(function () {
       data.value++;
       downloadCount.text(data.value.toLocaleString());
@@ -49,7 +44,6 @@
   });
 </script>
 
-<!-- Custom CSS for Styling -->
 <style>
   #download-counter-widget {
     text-align: center;
@@ -58,31 +52,31 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh; /* Full viewport height to center vertically */
+    height: 100vh;
   }
 
   #download-counter-widget p {
-    font-size: 18px; /* Base font size for "Downloads:" */
-    margin: 0 0 20px 0; /* Add some space below the text */
+    font-size: 18px;
+    margin: 0 0 20px 0;
   }
 
   #download-count {
-    font-size: 24px; /* Larger font size for the number */
-    font-weight: bold; /* Bold font for the number */
+    font-size: 24px; 
+    font-weight: bold; 
   }
 
   #download-button {
     background-color: #4CAF50;
     color: white;
     border: none;
-    padding: 20px 40px; /* Larger padding for a bigger button */
-    font-size: 24px; /* Larger font size for the button text */
+    padding: 20px 40px; 
+    font-size: 24px;
     cursor: pointer;
-    border-radius: 10px; /* Rounded corners */
-    transition: background-color 0.3s ease; /* Smooth hover effect */
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
   }
 
   #download-button:hover {
-    background-color: #45a049; /* Darker green on hover */
+    background-color: #45a049; 
   }
 </style>
