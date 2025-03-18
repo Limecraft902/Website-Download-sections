@@ -1,102 +1,14 @@
-<style>
-<![CDATA[
-  /* Ensure full-page height without affecting layout */
-  body, html {
-    height: auto; /* Changed from 100% to auto */
-    margin: 0;
-    text-align: center;
-    background-color: #f0f0f0;
-  }
-
-  /* Fix the HTML widget positioning */
-  #html-widget-container {
-    text-align: center;
-    font-family: Arial, sans-serif;
-    display: inline-block;
-    padding: 40px;
-    border: 2px solid #ddd;
-    border-radius: 15px;
-    background-color: #f9f9f9;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    width: auto; /* Prevents it from expanding incorrectly */
-    max-width: 90%;
-  }
-
-  p {
-    font-size: 32px;
-    margin-bottom: 20px;
-  }
-
-  #download-count {
-    font-size: 50px;
-    font-weight: bold;
-    color: #4CAF50;
-    margin-left: 10px;
-  }
-
-  #download-button {
-    background-color: #4CAF50;
-    color: white;
-    border: 3px solid #388E3C;
-    padding: 18px 35px;
-    font-size: 22px;
-    cursor: pointer;
-    border-radius: 10px;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    margin-top: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    justify-content: center;
-  }
-
-  #download-button:hover {
-    background-color: #45a049;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-  }
-
-  #download-button i {
-    font-size: 28px;
-  }
-
-  /* Footer fix to ensure proper alignment */
-  #jimdo_footer {
-    position: relative !important;
-    width: 100% !important;
-    display: flex !important;
-    flex-wrap: wrap !important;
-    justify-content: center !important;
-    align-items: center !important;
-    background-color: #e0e0e0 !important; /* Keeps the gray color */
-    padding: 20px 0 !important;
-  }
-
-  #jimdo_footer div {
-    width: auto !important;
-    max-width: 1200px !important;
-    text-align: center !important;
-  }
-
-  /* Fix any overflow caused by the widget */
-  body {
-    overflow-x: hidden !important;
-  }
-]]>
-</style>
-
 <div id="html-widget-container">
-    <p>
-        Downloads: <span id="download-count">0</span>
-    </p>
-    <button id="download-button">Download this Add-on</button>
+  <p>Downloads: <span id="download-count">0</span></p>
+  <button id="download-button">
+    Download this Add-on <i class="fas fa-download"></i>
+  </button>
 </div>
 
 <!-- Font Awesome for the download icon -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
 <script>
-/* <![CDATA[ */
   const htmlUrl = "https://raw.githubusercontent.com/Limecraft902/Website-Download-sections/refs/heads/Downloads/Addons/scare_your_friends_addon.html";
 
   const firebaseScript = document.createElement("script");
@@ -120,7 +32,7 @@
     })
     .catch(error => {
       console.error("Error fetching HTML content:", error);
-      document.getElementById("html-widget-container").innerHTML = "<p>Failed to load content. Please try again later.<\/p>";
+      document.getElementById("html-widget-container").innerHTML = "<p>Failed to load content. Please try again later.</p>";
     });
 
   function initializeDownloadCounter() {
@@ -156,5 +68,57 @@
       window.location.href = "https://limeteamstudios.jimdofree.com/thanks-for-downloading/";
     });
   }
-/*]]>*/
 </script>
+
+<style>
+  /* Center the widget on the page */
+  body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0; /* Optional: Light background for the page */
+  }
+
+  #html-widget-container {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    display: inline-block;
+    padding: 10px; /* Minimal padding */
+    border: 1px solid #ddd; /* Optional: Add a border for visual clarity */
+    border-radius: 6px; /* Optional: Rounded corners */
+    background-color: #f9f9f9; /* Optional: Light background color */
+  }
+
+  #download-count {
+    font-size: 18px; /* Smaller font size */
+    font-weight: bold;
+  }
+
+  #download-button {
+    background-color: #4CAF50;
+    color: white;
+    border: 1px solid #388E3C; /* Thinner border */
+    padding: 6px 12px; /* Even smaller padding */
+    font-size: 12px; /* Smaller font size */
+    cursor: pointer;
+    border-radius: 3px; /* Smaller border radius */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 6px; /* Smaller margin */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); /* Smaller shadow */
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Space between text and icon */
+    gap: 8px; /* Gap between text and icon */
+  }
+
+  #download-button:hover {
+    background-color: #45a049;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+  }
+
+  #download-button i {
+    font-size: 12px; /* Smaller icon size */
+  }
+</style>
