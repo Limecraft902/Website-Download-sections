@@ -1,15 +1,14 @@
 <style>
-  /* Center the widget on the page */
+<![CDATA[
+  /* Ensure full-page height without affecting layout */
   body, html {
-    height: 100%;
+    height: auto; /* Changed from 100% to auto */
     margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #f0f0f0;
     text-align: center;
+    background-color: #f0f0f0;
   }
 
+  /* Fix the HTML widget positioning */
   #html-widget-container {
     text-align: center;
     font-family: Arial, sans-serif;
@@ -19,6 +18,8 @@
     border-radius: 15px;
     background-color: #f9f9f9;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    width: auto; /* Prevents it from expanding incorrectly */
+    max-width: 90%;
   }
 
   p {
@@ -27,10 +28,10 @@
   }
 
   #download-count {
-    font-size: 50px; /* Bigger font size for the number */
+    font-size: 50px;
     font-weight: bold;
-    color: #4CAF50; /* Highlighted color */
-    margin-left: 10px; /* Small spacing from "Downloads:" */
+    color: #4CAF50;
+    margin-left: 10px;
   }
 
   #download-button {
@@ -58,10 +59,36 @@
   #download-button i {
     font-size: 28px;
   }
+
+  /* Footer fix to ensure proper alignment */
+  #jimdo_footer {
+    position: relative !important;
+    width: 100% !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    background-color: #e0e0e0 !important; /* Keeps the gray color */
+    padding: 20px 0 !important;
+  }
+
+  #jimdo_footer div {
+    width: auto !important;
+    max-width: 1200px !important;
+    text-align: center !important;
+  }
+
+  /* Fix any overflow caused by the widget */
+  body {
+    overflow-x: hidden !important;
+  }
+]]>
 </style>
 
 <div id="html-widget-container">
-    <p>Downloads: <span id="download-count">0</span></p>
+    <p>
+        Downloads: <span id="download-count">0</span>
+    </p>
     <button id="download-button">Download this Add-on</button>
 </div>
 
@@ -69,6 +96,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 
 <script>
+/* <![CDATA[ */
   const htmlUrl = "https://raw.githubusercontent.com/Limecraft902/Website-Download-sections/refs/heads/Downloads/Addons/scare_your_friends_addon.html";
 
   const firebaseScript = document.createElement("script");
@@ -128,4 +156,5 @@
       window.location.href = "https://limeteamstudios.jimdofree.com/thanks-for-downloading/";
     });
   }
+/*]]>*/
 </script>
