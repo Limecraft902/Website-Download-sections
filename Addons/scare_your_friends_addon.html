@@ -1,7 +1,7 @@
 <div id="html-widget-container">
-  <p>Downloads: <span id="download-count">0</span></p>
+  <p><strong>Total downloads:</strong> <span id="download-count">0</span></p>
   <button id="download-button">
-    Download this Add-on <i class="fas fa-download"></i>
+    <i class="fas fa-download"></i> Download this Add-on
   </button>
 </div>
 
@@ -71,56 +71,62 @@
 </script>
 
 <style>
-  /* Center the widget on the page */
-  body, html {
-    height: 100%;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #f0f0f0; /* Optional: Light background for the page */
-  }
-
+  /* Center everything */
   #html-widget-container {
     text-align: center;
     font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    border: 2px solid #ddd;
+    border-radius: 15px;
+    background-color: #f9f9f9;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   }
 
-  #download-count {
-    font-size: 36px; /* Larger font size for the download count */
-    font-weight: bold; /* Bold text */
-    color: #000; /* Black color for the count */
-  }
-
+  /* Total downloads text */
   #html-widget-container p {
-    font-size: 24px; /* Smaller font size for "Downloads:" */
-    margin: 0; /* Remove default margin */
-    color: #333; /* Dark gray color for "Downloads:" */
+    font-size: 24px;
+    margin: 0;
+    color: #333;
   }
 
+  /* Download count number */
+  #download-count {
+    font-size: 36px;
+    font-weight: bold;
+    color: #4CAF50;
+    margin-left: 10px;
+  }
+
+  /* Download button */
   #download-button {
     background-color: #4CAF50;
     color: white;
     border: none;
-    padding: 20px 40px; /* REALLY BIG padding */
-    font-size: 28px; /* REALLY BIG font size */
+    padding: 20px 40px;
+    font-size: 28px;
     cursor: pointer;
-    border-radius: 10px; /* Rounded corners */
+    border-radius: 10px;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    margin-top: 20px; /* Space between text and button */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow */
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Space between text and icon */
-    gap: 12px; /* Gap between text and icon */
+    justify-content: center;
+    gap: 12px;
   }
 
+  /* Hover effect */
   #download-button:hover {
     background-color: #45a049;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
   }
 
+  /* Icon inside button */
   #download-button i {
-    font-size: 28px; /* REALLY BIG icon size */
+    font-size: 28px;
   }
 </style>
