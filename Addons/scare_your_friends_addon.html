@@ -1,88 +1,16 @@
-<div id="html-widget-container">
-  <p><strong>Total downloads:</strong> <span id="download-count">0</span></p>
-  <button id="download-button">
-    <i class="fas fa-download"></i> Download this Add-on
-  </button>
-</div>
-
-<!-- Font Awesome for the download icon -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
-<script>
-  const htmlUrl = "https://raw.githubusercontent.com/Limecraft902/ltweb-downloads/refs/heads/ltdownloads/Addons/scare_your_friends_addon.html";
-
-  const firebaseScript = document.createElement("script");
-  firebaseScript.src = "https://cdn.firebase.com/v0/firebase.js";
-  document.head.appendChild(firebaseScript);
-
-  const jqueryScript = document.createElement("script");
-  jqueryScript.src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js";
-  document.head.appendChild(jqueryScript);
-
-  fetch(htmlUrl)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error("Download: https://raw.githubusercontent.com/Limecraft902/ltweb-content/refs/heads/ltcontent/Add-ons/SCARE%20Your%20friends%20Add-on/SCARE%20Your%20Friends%20(V1)%20-%20LimeTeam%20Studios.mcaddon");
-      }
-      return response.text();
-    })
-    .then(html => {
-      document.getElementById("html-widget-container").innerHTML = html;
-      initializeDownloadCounter();
-    })
-    .catch(error => {
-      console.error("Download: https://raw.githubusercontent.com/Limecraft902/ltweb-content/refs/heads/ltcontent/Add-ons/SCARE%20Your%20friends%20Add-on/SCARE%20Your%20Friends%20(V1)%20-%20LimeTeam%20Studios.mcaddon", error);
-      document.getElementById("html-widget-container").innerHTML = "<p>Download: https://raw.githubusercontent.com/Limecraft902/ltweb-content/refs/heads/ltcontent/Add-ons/SCARE%20Your%20friends%20Add-on/SCARE%20Your%20Friends%20(V1)%20-%20LimeTeam%20Studios.mcaddon</p>";
-    });
-
-  function initializeDownloadCounter() {
-    const downloadButton = document.querySelector("#html-widget-container #download-button");
-    const downloadCount = document.querySelector("#html-widget-container #download-count");
-    const id = "scare-your-friends-addon";
-    const downloadStats = new Firebase("https://downloads-5bbcb-default-rtdb.firebaseio.com/downloads/id/" + id);
-    let data = {};
-    let isnew = false;
-
-    downloadStats.once('value', function (snapshot) {
-      data = snapshot.val();
-      if (data == null) {
-        data = {
-          value: 0,
-          url: window.location.href,
-          id: id
-        };
-        isnew = true;
-      }
-      downloadCount.textContent = data.value.toLocaleString();
-    });
-
-    downloadButton.addEventListener("click", function () {
-      data.value++;
-      downloadCount.textContent = data.value.toLocaleString();
-      if (isnew) {
-        downloadStats.set(data);
-      } else {
-        downloadStats.child('value').set(data.value);
-      }
-      window.open("https://raw.githubusercontent.com/Limecraft902/ltweb-content/refs/heads/ltcontent/Add-ons/SCARE%20Your%20friends%20Add-on/SCARE%20Your%20Friends%20(V1)%20-%20LimeTeam%20Studios.mcaddon", "_blank");
-      window.location.href = "https://limeteamstudios.jimdofree.com/thanks-for-downloading/";
-    });
-  }
-</script>
-
 <style>
-  /* Remove any possible outer background */
+/* <![CDATA[ */
+
+  /* Reset body and html styles to allow scrolling */
   body, html {
     background: none !important;
     padding: 0;
     margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Keep the widget centered */
+    min-height: 100vh; /* Ensure the page takes at least the full viewport height */
+    display: block; /* Change from flex to block to allow natural scrolling */
   }
 
-  /* Keep the widget small and centered */
+  /* Center the widget container */
   #html-widget-container {
     text-align: center;
     font-family: Arial, sans-serif;
@@ -92,6 +20,7 @@
     border-radius: 15px;
     background-color: white; /* Ensure no extra backgrounds */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto; /* Add margin to center the widget and allow space around it */
   }
 
   /* Total downloads text */
@@ -145,4 +74,79 @@
     border: none !important;
     box-shadow: none !important;
   }
+/*]]>*/
 </style>
+
+<div id="html-widget-container">
+    <p>
+        <strong>Total downloads:</strong> <span id="download-count">0</span>
+    </p>
+    <button id="download-button">Download this Add-on</button>
+</div>
+
+<!-- Font Awesome for the download icon -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
+<script>
+/* <![CDATA[ */
+  const htmlUrl = "https://raw.githubusercontent.com/Limecraft902/ltweb-downloads/refs/heads/ltdownloads/Addons/scare_your_friends_addon.html";
+
+  const firebaseScript = document.createElement("script");
+  firebaseScript.src = "https://cdn.firebase.com/v0/firebase.js";
+  document.head.appendChild(firebaseScript);
+
+  const jqueryScript = document.createElement("script");
+  jqueryScript.src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js";
+  document.head.appendChild(jqueryScript);
+
+  fetch(htmlUrl)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error("Download: https://raw.githubusercontent.com/Limecraft902/ltweb-content/refs/heads/ltcontent/Add-ons/SCARE%20Your%20friends%20Add-on/SCARE%20Your%20Friends%20(V1)%20-%20LimeTeam%20Studios.mcaddon");
+      }
+      return response.text();
+    })
+    .then(html => {
+      document.getElementById("html-widget-container").innerHTML = html;
+      initializeDownloadCounter();
+    })
+    .catch(error => {
+      console.error("Error fetching HTML content:", error);
+      document.getElementById("html-widget-container").innerHTML = "<p>Download: https://raw.githubusercontent.com/Limecraft902/ltweb-content/refs/heads/ltcontent/Add-ons/SCARE%20Your%20friends%20Add-on/SCARE%20Your%20Friends%20(V1)%20-%20LimeTeam%20Studios.mcaddon<\/p>";
+    });
+
+  function initializeDownloadCounter() {
+    const downloadButton = document.querySelector("#html-widget-container #download-button");
+    const downloadCount = document.querySelector("#html-widget-container #download-count");
+    const id = "scare-your-friends-addon";
+    const downloadStats = new Firebase("https://downloads-5bbcb-default-rtdb.firebaseio.com/downloads/id/" + id);
+    let data = {};
+    let isnew = false;
+
+    downloadStats.once('value', function (snapshot) {
+      data = snapshot.val();
+      if (data == null) {
+        data = {
+          value: 0,
+          url: window.location.href,
+          id: id
+        };
+        isnew = true;
+      }
+      downloadCount.textContent = data.value.toLocaleString();
+    });
+
+    downloadButton.addEventListener("click", function () {
+      data.value++;
+      downloadCount.textContent = data.value.toLocaleString();
+      if (isnew) {
+        downloadStats.set(data);
+      } else {
+        downloadStats.child('value').set(data.value);
+      }
+      window.open("https://raw.githubusercontent.com/Limecraft902/ltweb-content/refs/heads/ltcontent/Add-ons/SCARE%20Your%20friends%20Add-on/SCARE%20Your%20Friends%20(V1)%20-%20LimeTeam%20Studios.mcaddon", "_blank");
+      window.location.href = "https://limeteamstudios.jimdofree.com/thanks-for-downloading/";
+    });
+  }
+/*]]>*/
+</script>
