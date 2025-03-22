@@ -91,7 +91,7 @@
 
 <script>
 /* <![CDATA[ */
-  const htmlUrl = "https://raw.githubusercontent.com/Limecraft902/ltweb-downloads/refs/heads/ltdownloads/Addons/scare_your_friends_addon.html";
+  const htmlUrl = "";
 
   const firebaseScript = document.createElement("script");
   firebaseScript.src = "https://cdn.firebase.com/v0/firebase.js";
@@ -104,7 +104,7 @@
   fetch(htmlUrl)
     .then(response => {
       if (!response.ok) {
-        throw new Error("Download: https://raw.githubusercontent.com/Limecraft902/ltweb-content/refs/heads/ltcontent/Add-ons/SCARE%20Your%20friends%20Add-on/SCARE%20Your%20Friends%20(V1)%20-%20LimeTeam%20Studios.mcaddon");
+        throw new Error("Download: https://raw.githubusercontent.com/Limecraft902/ltweb-content/refs/heads/ltcontent/Maps/CROSS%20THE%20ROAD/Cross%20The%20Road%20(V1)%20-%20LimeTeam%20Studios.mcworld");
       }
       return response.text();
     })
@@ -114,13 +114,13 @@
     })
     .catch(error => {
       console.error("Error fetching HTML content:", error);
-      document.getElementById("html-widget-container").innerHTML = "<p>Download: https://raw.githubusercontent.com/Limecraft902/ltweb-content/refs/heads/ltcontent/Add-ons/SCARE%20Your%20friends%20Add-on/SCARE%20Your%20Friends%20(V1)%20-%20LimeTeam%20Studios.mcaddon<\/p>";
+      document.getElementById("html-widget-container").innerHTML = "<p>Download: https://raw.githubusercontent.com/Limecraft902/ltweb-content/refs/heads/ltcontent/Maps/CROSS%20THE%20ROAD/Cross%20The%20Road%20(V1)%20-%20LimeTeam%20Studios.mcworld<\/p>";
     });
 
   function initializeDownloadCounter() {
     const downloadButton = document.querySelector("#html-widget-container #download-button");
     const downloadCount = document.querySelector("#html-widget-container #download-count");
-    const id = "scare-your-friends-addon";
+    const id = "lt-cross-the-road";
     const downloadStats = new Firebase("https://downloads-5bbcb-default-rtdb.firebaseio.com/downloads/id/" + id);
     let data = {};
     let isnew = false;
@@ -146,7 +146,7 @@
       } else {
         downloadStats.child('value').set(data.value);
       }
-      window.open("https://raw.githubusercontent.com/Limecraft902/ltweb-content/refs/heads/ltcontent/Add-ons/SCARE%20Your%20friends%20Add-on/SCARE%20Your%20Friends%20(V1)%20-%20LimeTeam%20Studios.mcaddon", "_blank");
+      window.open("https://raw.githubusercontent.com/Limecraft902/ltweb-content/refs/heads/ltcontent/Maps/CROSS%20THE%20ROAD/Cross%20The%20Road%20(V1)%20-%20LimeTeam%20Studios.mcworld", "_blank");
       window.location.href = "https://limeteamstudios.jimdofree.com/thanks-for-downloading/";
     });
   }
